@@ -5,9 +5,10 @@
 
 ui <- fluidPage(
   titlePanel("Use esquisse as a Shiny module"),
-  sidebarLayout(
+  # Now we create the sections
+  sidebarLayout( # -------------------------------------------------------------
     sidebarPanel(
-      radioButtons(
+      radioButtons( # Options as buttons
         inputId = 'data',
         label = "Data to use:",
         selected = 'iris',
@@ -15,7 +16,7 @@ ui <- fluidPage(
         choiceNames = c('Flowers example', 'Cars example', 'Upload from computer'),
         choiceValues = c('iris', 'mtcars', 'upload')
       ),
-      fileInput(
+      fileInput( # If you want to upload a file
         inputId = 'data_file',
         label = '',
         accept = c(
@@ -25,9 +26,9 @@ ui <- fluidPage(
         ), placeholder = "No file selected"
       )
     ),
-    mainPanel(
+    mainPanel( # ---------------------------------------------------------------
       tabsetPanel(
-        id = "main",
+        id = "main", # and we have two tabs
         tabPanel(title = "esquisse", esquisserUI(id = "esquisse")),
         tabPanel(title = "output", verbatimTextOutput("module_out"))
       )
